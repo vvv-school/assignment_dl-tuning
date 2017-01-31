@@ -13,12 +13,12 @@ solver_mode: CPU
 max_iter: #fill#
 #
 #### n_val=320
-#### batch_size_val=#fill#
-#### iters_per_epoch_val=320/#fill#=#fill#
+#### batch_size_val=32
+#### iters_per_epoch_val=320/32=10
 #### test_epoch=1
 #
 # the validation will carry out <test_iter> iterations
-test_iter: #fill#
+test_iter: 10
 #
 # carry out validation every <test_interval> training iterations
 test_interval: #fill#

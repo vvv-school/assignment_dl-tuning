@@ -33,7 +33,7 @@ layer {
   }
   data_param {
     source: "../lmdb_val"
-    batch_size: #fill#
+    batch_size: 32
     backend: LMDB
   }
 }
