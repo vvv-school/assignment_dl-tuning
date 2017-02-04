@@ -11,7 +11,7 @@ echo ${LAB_DIR}
 
 ########## iCW dataset directory
 # pay attention to put a '/' at the end (see example below)
-IMAGES_DIR=/home/icub/Downloads/iCW/
+IMAGES_DIR=/home/icub/robot-code/datasets/iCW/
 echo ${IMAGES_DIR}
 
 ########## CAFFE stuff

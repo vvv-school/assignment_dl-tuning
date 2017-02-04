@@ -11,7 +11,7 @@ echo ${LAB_DIR}
 
 ########## iCW dataset directory
 # pay attention to put a '/' at the end (see example below)
-IMAGES_DIR=/home/icub/Downloads/iCW/
+IMAGES_DIR=/home/icub/robot-code/datasets/iCW/
 echo ${IMAGES_DIR}
 
 ########## CAFFE stuff
@@ -108,8 +108,8 @@ cd ${TUTORIAL_DIR}/${EX}/${PROTOCOL}
 ${CAFFE_BIN} train -solver ${SOLVER_FILE} -weights ${WEIGHTS_FILE} --log_dir=${TUTORIAL_DIR}/${EX}/${PROTOCOL}
 
 # parse the output to obtain readable tables
-rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOtrain.txt
-rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOval.txt
+#rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOtrain.txt
+#rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOval.txt
 # creates caffeINFOtrain.txt and caffeINFOval.txt
 ${PARSE_LOG_SH} ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffe.INFO
 
