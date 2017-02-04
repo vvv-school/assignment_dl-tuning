@@ -44,7 +44,7 @@ setlist.transf_per_obj.test = {'MIX'};
 % here we chose to train/validate on day 1 and test on day 2
 setlist.day_per_transf.train = {'1'};
 setlist.day_per_transf.val = {'1'};
-setlist.day_per_transf.test = {'2'};
+setlist.day_per_transf.test = {'1'};
 
 %% Whether to put a max limit on the #frames 
 % to be sampled from each img sequence
