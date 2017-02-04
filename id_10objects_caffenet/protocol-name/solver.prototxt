@@ -7,7 +7,7 @@ solver_mode: CPU
 #### n_train=1280
 #### batch_size_train=#fill#
 #### iters_per_epoch_train=1280/#fill#=#fill#
-#### max_epoch=6
+#### max_epoch=#fill#
 #
 # carry out <max_iter> training iterations
 max_iter: #fill#
@@ -39,11 +39,8 @@ weight_decay: 0.0005
 #
 # learning rate decay policy
 base_lr: #fill#
-# either "poly" or "step" for the assignment
 lr_policy: "#fill#"
 power: #fill#
-stepsize: #fill#
-gamma: #fill#
 
 # the currently implemented learning rate
 # policies are as follows:

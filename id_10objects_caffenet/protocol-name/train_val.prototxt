@@ -43,11 +43,11 @@ layer {
   bottom: "data"
   top: "conv1"
   param {
-    lr_mult: 1
+    lr_mult: #fill#
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: #fill#
     decay_mult: 0
   }
   convolution_param {
@@ -98,11 +98,11 @@ layer {
   bottom: "norm1"
   top: "conv2"
   param {
-    lr_mult: 1
+    lr_mult: #fill#
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: #fill#
     decay_mult: 0
   }
   convolution_param {
@@ -154,11 +154,11 @@ layer {
   bottom: "norm2"
   top: "conv3"
   param {
-    lr_mult: 1
+    lr_mult: #fill#
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: #fill#
     decay_mult: 0
   }
   convolution_param {
@@ -187,11 +187,11 @@ layer {
   bottom: "conv3"
   top: "conv4"
   param {
-    lr_mult: 1
+    lr_mult: #fill#
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: #fill#
     decay_mult: 0
   }
   convolution_param {
@@ -221,11 +221,11 @@ layer {
   bottom: "conv4"
   top: "conv5"
   param {
-    lr_mult: 1
+    lr_mult: #fill#
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: #fill#
     decay_mult: 0
   }
   convolution_param {
@@ -261,16 +261,16 @@ layer {
   }
 }
 layer {
-  name: "fc6"
+  name: "#fill#"
   type: "InnerProduct"
   bottom: "pool5"
-  top: "fc6"
+  top: "#fill#"
   param {
-    lr_mult: 1.000000
+    lr_mult: #fill#
     decay_mult: 1
   }
   param {
-    lr_mult: 2.000000
+    lr_mult: #fill#
     decay_mult: 0
   }
   inner_product_param {
@@ -288,14 +288,14 @@ layer {
 layer {
   name: "relu6"
   type: "ReLU"
-  bottom: "fc6"
-  top: "fc6"
+  bottom: "#fill#"
+  top: "#fill#"
 }
 layer {
   name: "drop6"
   type: "Dropout"
-  bottom: "fc6"
-  top: "fc6"
+  bottom: "#fill#"
+  top: "#fill#"
   dropout_param {
     dropout_ratio: 0.500000
   }
@@ -303,7 +303,7 @@ layer {
 layer {
   name: "#fill#"
   type: "InnerProduct"
-  bottom: "fc6"
+  bottom: "#fill#"
   top: "#fill#"
   param {
     lr_mult: #fill#
