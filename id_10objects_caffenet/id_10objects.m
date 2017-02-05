@@ -69,12 +69,12 @@ if setlist.limit_frames.test
     % the test frames are extracted as contiguous sequences
     % (like a short video on which you test the system):
     % you can start the sequence 
-    % either from a random or arbitrary frame
+    % either from a random or an arbitrary frame
     % [ in the latter case, choose a number such that
     % test_starting_img + max_frames.test < 150 ]
     %setlist.test_starting_img = 'random';
     setlist.test_starting_img = 1;
-    % in this case a sequence of 40 frames is extracted
+    % in this case a sequence of 120 frames is extracted
     % starting from the first one
 end
 
