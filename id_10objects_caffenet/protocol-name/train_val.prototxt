@@ -47,6 +47,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -102,6 +104,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -158,6 +162,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -191,6 +197,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -225,6 +233,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -270,6 +280,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -310,6 +322,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }
@@ -350,6 +364,8 @@ layer {
     decay_mult: 1
   }
   param {
+    # NOTE: usually the leaning rate of biases is twice
+    # the learning rate of weights
     lr_mult: #fill#
     decay_mult: 0
   }

@@ -55,9 +55,9 @@ FILELIST_TRAIN=${TUTORIAL_DIR}/${EX}/images_lists/train.txt
 echo ${FILELIST_TRAIN}
 FILELIST_VAL=${TUTORIAL_DIR}/${EX}/images_lists/val.txt
 echo ${FILELIST_VAL}
-FILELIST_TEST_DAY1=${TUTORIAL_DIR}/${EX}/images_lists/test_day1.txt
+FILELIST_TEST_DAY1=${TUTORIAL_DIR}/${EX}/images_lists/test_longer_day1.txt
 echo ${FILELIST_TEST_DAY1}
-FILELIST_TEST_DAY2=${TUTORIAL_DIR}/${EX}/images_lists/test_day2.txt
+FILELIST_TEST_DAY2=${TUTORIAL_DIR}/${EX}/images_lists/test_longer_day2.txt
 echo ${FILELIST_TEST_DAY2}
 LABELS_FILE=${TUTORIAL_DIR}/${EX}/images_lists/labels.txt
 echo ${LABELS_FILE}
@@ -81,12 +81,11 @@ ${CREATE_LMDB_BIN} --resize_width=256 --resize_height=256 --shuffle ${IMAGES_DIR
 # it is the name of the directory where you have your 
 # train_val.prototxt, solver.prototxt and deploy.prototxt
 PROTOCOL="all-0"
-#PROTOCOL="conv-0_fc6N-2_fc7N-2"
 #PROTOCOL="conv-0_fc6-2_fc7-2"
-#PROTOCOL="conv-0_fc6N-3_fc7N-3"
 #PROTOCOL="conv-0_fc6-3_fc7-3"
-#PROTOCOL="conv-0_fc6N-4_fc7N-4"
 #PROTOCOL="all-3"
+#PROTOCOL="conv-0_fc6N-2_fc7N-2"
+#PROTOCOL="conv-0_fc6N-4_fc7N-4"
 #PROTOCOL="all-3_batch-8"
 #PROTOCOL="all-0_batch-1"
 
@@ -126,14 +125,17 @@ FINAL_SNAP=${TUTORIAL_DIR}/${EX}/${PROTOCOL}/${snap_list[0]}
 FINAL_MODEL=${TUTORIAL_DIR}/${EX}/${PROTOCOL}/final.caffemodel
 mv ${FINAL_SNAP} ${FINAL_MODEL}
 rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/icw_iter_*.solverstate
+rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/icw_iter_*.caffemodel
 
 ########## TEST!
+
+FINAL_MODEL=${TUTORIAL_DIR}/${EX}/${PROTOCOL}/final.caffemodel
 
 # choose whether you want to print and visualize the prediction for each tested image
 # the string can be either "true" or "false"
 PRINT_PREDICTIONS="true";
 # if the above is true, choose the rate [ms] of visualization 
-IMG_DELAY="500"
+IMG_DELAY="100"
 
 # on day1
 ${CLASSIFY_IMAGE_LIST_BIN} ${DEPLOY_FILE} ${FINAL_MODEL} ${BINARYPROTO_MEAN} \

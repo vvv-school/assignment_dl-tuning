@@ -39,8 +39,8 @@ weight_decay: 0.0005
 #
 # learning rate decay policy
 base_lr: #fill#
-lr_policy: "#fill#"
-power: #fill#
+lr_policy: "poly"
+power: 0.5
 
 # the currently implemented learning rate
 # policies are as follows:

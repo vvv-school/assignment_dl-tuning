@@ -55,9 +55,9 @@ FILELIST_TRAIN=${TUTORIAL_DIR}/${EX}/images_lists/train.txt
 echo ${FILELIST_TRAIN}
 FILELIST_VAL=${TUTORIAL_DIR}/${EX}/images_lists/val.txt
 echo ${FILELIST_VAL}
-FILELIST_TEST_DAY1=${TUTORIAL_DIR}/${EX}/images_lists/test_day1.txt
+FILELIST_TEST_DAY1=${TUTORIAL_DIR}/${EX}/images_lists/test_longer_day1.txt
 echo ${FILELIST_TEST_DAY1}
-FILELIST_TEST_DAY2=${TUTORIAL_DIR}/${EX}/images_lists/test_day2.txt
+FILELIST_TEST_DAY2=${TUTORIAL_DIR}/${EX}/images_lists/test_longer_day2.txt
 echo ${FILELIST_TEST_DAY2}
 LABELS_FILE=${TUTORIAL_DIR}/${EX}/images_lists/labels.txt
 echo ${LABELS_FILE}
@@ -109,8 +109,8 @@ do
         ${CAFFE_BIN} train -solver ${SOLVER_FILE} -weights ${WEIGHTS_FILE} --log_dir=${TUTORIAL_DIR}/${EX}/${PROTOCOL}
 
         # parse the output to obtain readable tables
-        rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOtrain.txt
-        rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOval.txt
+        #rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOtrain.txt
+        #rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffeINFOval.txt
         # creates caffeINFOtrain.txt and caffeINFOval.txt
         ${PARSE_LOG_SH} ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/caffe.INFO
 
@@ -127,14 +127,17 @@ do
         FINAL_MODEL=${TUTORIAL_DIR}/${EX}/${PROTOCOL}/final.caffemodel
         mv ${FINAL_SNAP} ${FINAL_MODEL}
         rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/icw_iter_*.solverstate
+        rm ${TUTORIAL_DIR}/${EX}/${PROTOCOL}/icw_iter_*.caffemodel
 
         ########## TEST!
+
+        FINAL_MODEL=${TUTORIAL_DIR}/${EX}/${PROTOCOL}/final.caffemodel
 
         # choose whether you want to print and visualize the prediction for each tested image
         # the string can be either "true" or "false"
         PRINT_PREDICTIONS="true";
         # if the above is true, choose the rate [ms] of visualization 
-        IMG_DELAY="500"
+        IMG_DELAY="100"
 
         # on day1
         ${CLASSIFY_IMAGE_LIST_BIN} ${DEPLOY_FILE} ${FINAL_MODEL} ${BINARYPROTO_MEAN} \
