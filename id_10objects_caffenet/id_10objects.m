@@ -64,7 +64,7 @@ if setlist.limit_frames.val
     setlist.max_frames.val = 40;
 end
 if setlist.limit_frames.test
-    setlist.max_frames.test = 120;
+    setlist.max_frames.test = 200;
     % differently from training and validation,
     % the test frames are extracted as contiguous sequences
     % (like a short video on which you test the system):
