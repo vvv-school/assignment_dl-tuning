@@ -1,3 +1,7 @@
+###################################################
+## search for occurrencies of the ### character sequence in this file
+## to quickly find parameters that you must pay attention to
+###################################################
 name: "CaffeNet_iCubWorld"
 layer {
   name: "data"
@@ -14,7 +18,7 @@ layer {
   }
   data_param {
     source: "../lmdb_train"
-    batch_size: #fill#
+    batch_size: 32
     backend: LMDB
   }
 }
@@ -43,13 +47,11 @@ layer {
   bottom: "data"
   top: "conv1"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
@@ -100,13 +102,11 @@ layer {
   bottom: "norm1"
   top: "conv2"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
@@ -158,13 +158,11 @@ layer {
   bottom: "norm2"
   top: "conv3"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
@@ -193,13 +191,11 @@ layer {
   bottom: "conv3"
   top: "conv4"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
@@ -229,13 +225,11 @@ layer {
   bottom: "conv4"
   top: "conv5"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
@@ -271,18 +265,16 @@ layer {
   }
 }
 layer {
-  name: "#fill#"
+  name: "fc6"
   type: "InnerProduct"
   bottom: "pool5"
-  top: "#fill#"
+  top: "fc6"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   inner_product_param {
@@ -300,31 +292,29 @@ layer {
 layer {
   name: "relu6"
   type: "ReLU"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc6"
+  top: "fc6"
 }
 layer {
   name: "drop6"
   type: "Dropout"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc6"
+  top: "fc6"
   dropout_param {
     dropout_ratio: 0.500000
   }
 }
 layer {
-  name: "#fill#"
+  name: "fc7"
   type: "InnerProduct"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc6"
+  top: "fc7"
   param {
-    lr_mult: #fill#
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    lr_mult: 2
     decay_mult: 0
   }
   inner_product_param {
@@ -342,35 +332,46 @@ layer {
 layer {
   name: "relu7"
   type: "ReLU"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc7"
+  top: "fc7"
 }
 layer {
   name: "drop7"
   type: "Dropout"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc7"
+  top: "fc7"
   dropout_param {
     dropout_ratio: 0.500000
   }
 }
 layer {
+  # ### note that here we rename the last layer to fc8N
+  # (it was fc8 in the original model trained on ImageNet)
+  # because we are reshaping it by setting a different number of units
+  # and hence we will learn it from scratch
   name: "fc8N"
   type: "InnerProduct"
-  bottom: "#fill#"
+  bottom: "fc7"
   top: "fc8N"
   param {
-    lr_mult: #fill#
+    # ### the following parameter means that the learning rate of this layer
+    # is multiplied by a factor of <lr_mult> (10 in this case)
+    # with respect to the base learning rate specified in the solver.prototxt (base_lr parameter)
+    # because we are learning from scratch and we want to modify the weights of this layer
+    # faster than all previous layers (for which, if you check, <base_lr> is set to 1)
+    lr_mult: 10
     decay_mult: 1
   }
   param {
-    # NOTE: usually the leaning rate of biases is twice
-    # the learning rate of weights
-    lr_mult: #fill#
+    # ### this parameter specifies the same as above, but for the biases
+    # ''usually'' the learning rate of the biases is twice the learning rate of the weights
+    lr_mult: 20
     decay_mult: 0
   }
   inner_product_param {
-    num_output: #fill#
+    # ### the following parameter is the number of classes
+    # that you want to discriminate
+    num_output: FILLME
     weight_filler {
       type: "gaussian"
       std: 0.01

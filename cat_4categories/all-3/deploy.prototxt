@@ -1,3 +1,9 @@
+###################################################
+## search for occurrencies of the ### character sequence in this file
+## to quickly find parameters that you must pay attention to
+## NOTE that this file must match the train_val.prototxt
+## i.e. layers with same names and same shape!
+###################################################
 name: "CaffeNet_iCubWorld"
 layer {
   name: "data"
@@ -174,10 +180,10 @@ layer {
   }
 }
 layer {
-  name: "#fill#"
+  name: "fc7"
   type: "InnerProduct"
   bottom: "fc6"
-  top: "#fill#"
+  top: "fc7"
   inner_product_param {
     num_output: 4096
   }
@@ -185,25 +191,29 @@ layer {
 layer {
   name: "relu7"
   type: "ReLU"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc7"
+  top: "fc7"
 }
 layer {
   name: "drop7"
   type: "Dropout"
-  bottom: "#fill#"
-  top: "#fill#"
+  bottom: "fc7"
+  top: "fc7"
   dropout_param {
     dropout_ratio: 0.500000
   }
 }
 layer {
+  # ### note that here we rename the last layer to fc8N
+  # to match the name of the new learned layer specified in the train_val.prototxt
   name: "fc8N"
   type: "InnerProduct"
-  bottom: "#fill#"
+  bottom: "fc7"
   top: "fc8N"
   inner_product_param {
-    num_output: #fill#
+    # ### note that this must be set to the number of classes to discriminate
+    # as in the train_val.prototxt
+    num_output: FILLME
   }
 }
 layer {
