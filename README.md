@@ -128,12 +128,12 @@ $ ls
 
 1. Consider the tran/val/test splits that we adopted and modify them in order to train on less number of object examples per category (e.g. around 4), while maintaining a similar number of total training/validation images.
 
-  Which is the accuracy achieved on the test set? Better or worse than in the first case? How would you explain this result?
+    Which is the accuracy achieved on the test set? Better or worse than in the first case? How would you explain this result?
 
-  [**HINT**] To do this, you can clone the `cat_4categories` folder in a new one, where you will modify the `imageset_config.yml` file to generate the new image sets. You will then repeat the steps from [here](#generate-the-lists-of-train-val-test-images) on. In doing this, check the scripts that you call, and replace the name of the new folder in all places where the name of the original one appears.
+    [**HINT**] To do this, you can clone the `cat_4categories` folder in a new one, where you will modify the `imageset_config.yml` file to generate the new image sets. You will then repeat the steps from [here](#generate-the-lists-of-train-val-test-images) on. In doing this, check the scripts that you call, and replace the name of the new folder in all places where the name of the original one appears.
 
 2. Consider an object categorization task between all the six categories available in the `iCW` dataset, and fine-tune a network on this task.
 
-  Which is the accuracy achieved on the test set? Better or worse than in the first case? How would you explain this result?
+    Which is the accuracy achieved on the test set? Better or worse than in the first case? How would you explain this result?
 
-  [**HINT**] To do this, you can do as suggested for point 1.
+    [**HINT**] To do this, you can do as suggested for point 1.
