@@ -121,7 +121,7 @@ $ ls
 ```
 
 1. check that the training produced the `final.caffemodel`!
-2. have a look at the `caffeINFotrain.txt` and `caffeINFOval.txt`, to have an idea of the train/validation performances achieved during training.
+2. have a look at the `caffeINFOtrain.txt` and `caffeINFOval.txt`, to have an idea of the train/validation performances achieved during training.
 2. finally look at `test_acc.txt`: is it reasonable? How do you think could be improved?
 
 ## Bonus questions
