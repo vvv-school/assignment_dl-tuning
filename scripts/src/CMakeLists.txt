@@ -31,7 +31,7 @@ set(folder_source ${PROJECTNAME}.cpp)
 source_group("Source Files" FILES ${folder_source})
 
 add_executable(${PROJECTNAME} ${folder_source})
-target_compile_definitions(${PROJECT_NAME} PRIVATE ${Caffe_DEFINITIONS})
+target_compile_definitions(${PROJECTNAME} PRIVATE ${Caffe_DEFINITIONS})
 
 target_link_libraries(${PROJECTNAME} ${OpenCV_LIBRARIES})
 target_link_libraries(${PROJECTNAME} ${Caffe_LIBRARIES})
